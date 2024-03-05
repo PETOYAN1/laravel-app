@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -24,6 +25,13 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        if(!Storage::exists('data')){
+            Storage::makeDirectory('data/');
+        }
+        if(!Storage::drive('public')->exists('avatar')) {
+            Storage::drive('public')->makeDirectory('avatar');
+        }
+
         $fakerFileName = $this->faker->image(
             storage_path("app/data"),
             800,
@@ -38,8 +46,8 @@ class UserFactory extends Factory
             'avatar' => "app/data/" . basename($fakerFileName),
             'gender' => User::GENDER[rand(0,1)],
             'dob' => fake()->date(),
-            'is_hide' => User::IS_BLOCKED[rand(0,1)],
-            'is_blocked' => User::IS_BLOCKED[rand(0,1)]
+            'is_hide' => rand(0,1),
+            'is_blocked' => rand(0,1)
         ];
     }
 

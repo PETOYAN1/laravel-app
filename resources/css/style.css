@@ -1,0 +1,16 @@
+.gender {
+    display: flex;
+    gap: 1em;
+}
+.gender_box {
+    display: flex;
+    gap: 1em;
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+}
+.gender_label {
+    margin-bottom: 5px;
+}
