@@ -19,7 +19,7 @@ class LikeFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => random_int(DB::table('categories')->min('id'), DB::table('categories')->max('id')),
+            'user_id' => random_int(DB::table('users')->min('id'), DB::table('users')->max('id')),
             'post_id' => random_int(DB::table('posts')->min('id'), DB::table('posts')->max('id')),
             'is_like' => User::IS_BLOCKED[rand(0,1)]
         ];

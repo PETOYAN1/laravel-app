@@ -26,24 +26,17 @@ class UserFactory extends Factory
     public function definition(): array
     {
         if(!Storage::exists('data')){
-            Storage::makeDirectory('data/');
+            Storage::makeDirectory('data');
         }
-        if(!Storage::drive('public')->exists('avatar')) {
-            Storage::drive('public')->makeDirectory('avatar');
-        }
-
-        $fakerFileName = $this->faker->image(
-            storage_path("app/data"),
-            800,
-            600
-        );
+        
+        $fakerFileName = $this->faker->image(storage_path("app/data"), 800, 600);
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'avatar' => "app/data/" . basename($fakerFileName),
+            'avatar' => "data/" . basename($fakerFileName),
             'gender' => User::GENDER[rand(0,1)],
             'dob' => fake()->date(),
             'is_hide' => rand(0,1),

@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -29,7 +29,7 @@
             <div class="gender">
                 <div class="gender_box">
                     <label for="Male">Male</label>
-                    <input type="radio" value="Male" class="block mt-1" name="gender" id="Male">
+                    <input type="radio" value="Male" class="block mt-1" name="gender" id="Male" checked>
                 </div>
                 <div class="gender_box">
                     <label for="Female">Female</label>
@@ -50,7 +50,7 @@
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
+                            type="text"
                             name="password"
                             required autocomplete="new-password" />
 
@@ -62,7 +62,7 @@
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
+                            type="text"
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />

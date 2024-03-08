@@ -32,7 +32,7 @@ class PostFactory extends Factory
             'title' => fake()->name(),
             'description' => fake()->text(),
             'category_id' => random_int(DB::table('categories')->min('id'), DB::table('categories')->max('id')),
-            'image' => "app/data/" . basename($fakerFileName),
+            'image' => "data/" . basename($fakerFileName),
             'published' => rand(0,1)
         ];
     }

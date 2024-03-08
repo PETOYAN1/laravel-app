@@ -46,6 +46,39 @@
                 </div>
             @endif
         </div>
+         <!-- Avatar -->
+         <div class="mt-4">
+            <x-input-label for="avatar" :value="__('Avatar')" />
+            <div class="for_avatar">
+                <x-text-input id="avatar" class="block mt-1 custom-file-input" type="file" name="avatar" enctype="multipart/form-data" required autocomplete="dob" />
+                <img class="profile" src="{{$user->getImageURL()}}" alt="{{$user->getImageURL()}}">
+                <x-input-error :messages="$errors->get('avatar')" class="mt-2" />
+            </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="mt-4">
+            <p class="block font-medium text-sm text-gray-700 dark:text-gray-300 gender_label">Gender</p>
+            <div class="gender">
+                <div class="gender_box">
+                    <label for="Male">Male</label>
+                    <input type="radio" value="Male" class="block mt-1" name="gender" id="Male" {{$user->gender == 'Male' ? 'checked' : null}}>
+                </div>
+                <div class="gender_box">
+                    <label for="Female">Female</label>
+                    <input type="radio" value="Female" class="block mt-1" name="gender" id="Female" {{$user->gender == 'Female' ? 'checked' : null}}>
+                </div>
+            </div>
+            <x-input-error :messages="$errors->get('gender')" class="mt-2" />
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mt-4">
+            <x-input-label for="dob" :value="__('Date of Birth')" />
+            <x-text-input id="dob" class="block mt-1 w-full" type="date" name="dob" value='{{$user->dob}}' required autocomplete="dob" />
+            <x-input-error :messages="$errors->get('dob')" class="mt-2" />
+        </div>
+
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>

@@ -18,10 +18,9 @@ return new class extends Migration
             $table->bigInteger('post_id')->unsigned()->index()->nullable();
             $table->bigInteger('replay_id')->unsigned()->index()->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('replay_id')->references('id')->on('follows');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('replay_id')->references('id')->on('follows')->onDelete('cascade');
         });
     }
 

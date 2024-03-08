@@ -18,8 +18,8 @@ return new class extends Migration
             $table->smallInteger('rate')->default(0);
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->change();
         });
     }
 
