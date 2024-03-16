@@ -48,16 +48,14 @@ class RegisteredUserController extends Controller
         }
         if(request()->has('avatar')){
             $profileimage = request()->file('avatar');
-            $imageName = time() .'.'. $profileimage -> getClientOriginalExtension();
-            $imageSave = storage_path('app/data/');
-            $profileimage->move($imageSave, $imageName);
+            $file_path = Storage::disk('local')->put('data', $profileimage);
         }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'dob' => $request->dob,
-            'avatar' => 'data/' . $imageName,
+            'avatar' => $file_path,
             'password' => Hash::make($request->password),
         ]);
 

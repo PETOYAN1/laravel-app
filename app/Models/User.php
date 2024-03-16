@@ -58,9 +58,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    function getImageURL() {
+    public function getImageURL() {
         if($this->avatar) {
             return url($this->avatar);
         }
     }
+    public function followings() {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'follower_id')->withTimestamps('');
+    }
+
 }
