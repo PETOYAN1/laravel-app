@@ -4,9 +4,9 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <h1 class="text-center posts">Posts</h1>
+    <h1 class="text-center posts dark:text-gray-200">Posts</h1>
     <div class="py-12">
-        <div class="optionSection">
+        <div class="optionSection bg-white dark:bg-gray-800 text-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
             <h3 class="text-center mt-4">Categories</h3>
             @isset($categories)
                 @foreach($categories as $category)
@@ -22,10 +22,12 @@
                     @isset($posts)
                     @foreach ($posts as $post)
                     <div class="post_section">
-                        <img class="logo" src="{{$post->image}}" alt="avatar">
+                        <img class="logo" src="{{$post->users->avatar}}" alt="avatar">
                         <h2>{{$post->title}}</h2>
                     </div>
+                    <span>{{$post->created_at}}</span>
                     <section class="section">
+                        <img class="post_image" src="{{$post->image}}" alt="avatar">
                         <h2>{{$post->description}}</h2>
                     </section>
                     <div class="post_section2">
@@ -33,13 +35,23 @@
                         <a href="#"><i><img class="likes_comments" src="images/comment.png" alt="icon"></i></a>
                     </div>
                     @endforeach
+                    <div class="m-4">
+                        {{ $posts->links() }}
+                    </div>
                     @endisset
                 </div>
-                {{ $posts->links() }}
             </div>
         </div>
-        <div class="optionSection">
-            <h3 class="text-center mt-4">Options</h3>
+        <div class="optionSection bg-white dark:bg-gray-800 text-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
+            <h3 class="text-center mt-4">Users</h3>
+            @isset($users)
+                @foreach($users as $user)
+                <ul class="blog_users">
+                    <a href="#"><img class="logo" src="{{$user->avatar}}" alt="avatar"></a>
+                    <li><a href="#">{{$user->name}}</a></li>
+                </ul>
+                @endforeach
+                @endisset
         </div>
     </div>
 </x-app-layout>
