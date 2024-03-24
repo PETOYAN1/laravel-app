@@ -22,6 +22,18 @@
                         {{ __('Profile') }}
                     </x-nav-link>
                 </div>
+                <!-- Support Page -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    {{-- <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')"> --}}
+                        {{-- {{ __('Support') }} --}}
+                    {{-- </x-nav-link> --}}
+                </div>
+                <!-- Settings Page -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    {{-- <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')"> --}}
+                        {{-- {{ __('Settings') }} --}}
+                    {{-- </x-nav-link> --}}
+                </div>
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -40,6 +52,9 @@
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Settings') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

@@ -18,8 +18,8 @@ class FollowFactory extends Factory
     public function definition(): array
     {
         return [
-            'follower_id' => random_int(DB::table('users')->min('id'), DB::table('users')->max('id')),
             'user_id' => random_int(DB::table('users')->min('id'), DB::table('users')->max('id')),
+            'follower_id' => random_int(DB::table('users')->min('id'), DB::table('users')->max('id')),
         ];
     }
 }
