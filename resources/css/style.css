@@ -23,7 +23,7 @@
     border-radius: 50%;
     object-fit: cover;
     border: 5px ;
-    border: 2px dashed black;
+    border: 2px dashed white;
 }
 .for_avatar {
     display: flex;
@@ -68,10 +68,11 @@
 }
 .py-12 {
     display: flex;
-    padding-top: 1rem
+    padding-top: 1rem;
+    justify-content: center;
 }
 .max-w-7xls {
-    max-width: 60%;
+    width: 60%;
     margin: 0;
 }
 .post_section2 {
@@ -112,7 +113,10 @@ section header {
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 .theme {
-    background-color: rgb(19 25 36);
+    background-color: rgb(3 7 18 / var(--tw-bg-opacity));
+}
+.theme form {
+    background-color: transparent;
 }
 .post_image {
     width: 100%;

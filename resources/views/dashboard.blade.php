@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <h1 class="text-center posts dark:text-gray-200">Posts</h1>
+    <h1 class="text-center posts dark:text-gray-200 mt-2">{{__('Posts')}}</h1>
     <div class="py-12">
         @include('layouts.categories')
         <div class="max-w-7xls mx-auto sm:px-6 lg:px-8">
